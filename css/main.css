@@ -1,0 +1,14 @@
+body{
+	max-width: 100%;
+}
+
+.htemplate{
+	max-width: inherit;
+}
+
+.ftemplate{
+	position: absolute;
+	max-width: inherit;
+/*	height: 114px;*/
+	bottom:0px;
+}
