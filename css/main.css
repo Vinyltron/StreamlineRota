@@ -1,0 +1,56 @@
+body{
+	max-width: 100%;
+	font-family: helvetica, sans-serif;
+}
+
+.clear{
+	clear: both;
+}
+
+.htemplate{
+	max-width: inherit;
+}
+
+.ftemplate{
+	position: absolute;
+	max-width: inherit;
+/*	height: 114px;*/
+	bottom:0px;
+}
+
+.mainbutton{
+	width: 200px;
+	height: 200px;
+	padding: 10px 0 0 10px;
+	margin-right: 20px;
+	float: left;
+	box-shadow: 3px 3px 3px #D0D0D0;
+	border-radius: 10px;
+	font-family: Georgia, sans-serif;
+	color: #FFFFFF;
+	background-color: #6D46BF;
+	background-image: url("/img/plus.png");
+	background-size: 75% 75%;
+	background-repeat: no-repeat;
+	cursor: pointer;
+    background-position: center; 
+}
+
+a .mainbutton {
+
+}
+
+/*newtemplate css*/
+.daywrap{
+	width: 500px;
+	height: 200px;
+	float: left;
+}
+
+#nametemplate{
+	float: left;
+}
+
+#duplicaterota{
+	float: left;
+}
