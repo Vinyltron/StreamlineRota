@@ -43,7 +43,7 @@ a .mainbutton {
 /*newtemplate css*/
 .daywrap{
 	width: 500px;
-	height: 200px;
+	height: auto;
 	float: left;
 }
 
@@ -52,5 +52,5 @@ a .mainbutton {
 }
 
 #duplicaterota{
-	float: left;
+/*	float: left;*/
 }
