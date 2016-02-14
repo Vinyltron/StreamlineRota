@@ -13,9 +13,6 @@ if ($dba->select_db('fyp') === false) {
 mysqli_close($dba);
 //Initialise main database connection
 $db = new PDO('mysql:host=localhost;dbname=fyp;charset=utf8', 'root', '');
-
-session_start();
-
 ?>
 <!--//////////////////////////////////////////////////-->
 
@@ -37,18 +34,15 @@ session_start();
 		// 	$(".mainbutton").click(function(){
 		// 		$(this).css("background-color","#532F9D");
 		// 		});
-
 		// 	$(".mainbutton").hover(function(){}
 		// 		$(this).addClass("buttonhover");});
 		// </script>
 		<!--head-->
 		<img src="header.png" class="htemplate">
 		<!--/head-->
-
 		<!-- Create New Template -->
 		<a href="newtemplate.php"><div class="mainbutton" id="templatebutton">New Template</div></a>
 		<!-- Create new Rota -->
 		<a href="rota.php"><div class="mainbutton" id="rotabutton">New Rota</div></a>
 	</body>
-
 </html>

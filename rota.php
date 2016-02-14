@@ -14,8 +14,6 @@ mysqli_close($dba);
 //Initialise main database connection
 $db = new PDO('mysql:host=localhost;dbname=fyp;charset=utf8', 'root', '');
 
-session_start();
-
 ?>
 <!--//////////////////////////////////////////////////-->
 

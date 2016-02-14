@@ -35,12 +35,16 @@ $locations = array("Library","Portland","Park","Richmond","IT Center","Guildhall
 	<script>
 	$( document ).ready(function() {
 
+		$(".removeshift").on("click", "body", function() {
+			console.log("remove shift clicked");
+		});
+
 		$("#addsunday").click(function() {
 			var num = 4;
-			var insertion1 = "<select id='Xsunstart' form='newtemplateform'><?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?> </select>"; 
-			var insertion2 = "<select id='Xsunfin' form='newtemplateform'><?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?> </select>";
-			var insertion3 = "<select id='Xsunloc' form='newtemplateform'><?php foreach($locations as $location){ print '<option value=\"$location\">' . $location . '</option>\n'; }?></select>";
-			var insertion4 = "<button>Remove Shift</button><br/>";
+			var insertion1 = "<div class='shiftwrapper'><select data-col-id='start' id='Xsunstart' form='newtemplateform'><?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?> </select>"; 
+			var insertion2 = "<select data-col-id='finish' id='Xsunfin' form='newtemplateform'><?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?> </select>";
+			var insertion3 = "<select data-col-id='loc' id='Xsunloc' form='newtemplateform'><?php foreach($locations as $location){ print '<option value=\"$location\">' . $location . '</option>\n'; }?></select>";
+			var insertion4 = "<button class='removeshift'>Remove Shift</button><br/></div>";
 			document.getElementById('sundaywrap').innerHTML += insertion1;
 			document.getElementById('sundaywrap').innerHTML += insertion2;
 			document.getElementById('sundaywrap').innerHTML += insertion3;
