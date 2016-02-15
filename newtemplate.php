@@ -35,109 +35,131 @@ $locations = array("Library","Portland","Park","Richmond","IT Center","Guildhall
 	<script>
 	$( document ).ready(function() {
 
-		$(".removeshift").on("click", "body", function() {
-			console.log("remove shift clicked");
+		// capture any clicks on the .shiftwrapper buttons that are in the main body of the dom
+		$("body").on("click", ".removeshift", function() {
+			$(this).closest(".shiftwrapper").remove();
 		});
 
 		$("#addsunday").click(function() {
-			var num = 4;
-			var insertion1 = "<div class='shiftwrapper'><select data-col-id='start' id='Xsunstart' form='newtemplateform'><?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?> </select>"; 
-			var insertion2 = "<select data-col-id='finish' id='Xsunfin' form='newtemplateform'><?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?> </select>";
-			var insertion3 = "<select data-col-id='loc' id='Xsunloc' form='newtemplateform'><?php foreach($locations as $location){ print '<option value=\"$location\">' . $location . '</option>\n'; }?></select>";
-			var insertion4 = "<button class='removeshift'>Remove Shift</button><br/></div>";
-			document.getElementById('sundaywrap').innerHTML += insertion1;
-			document.getElementById('sundaywrap').innerHTML += insertion2;
-			document.getElementById('sundaywrap').innerHTML += insertion3;
-			document.getElementById('sundaywrap').innerHTML += insertion4;
-			num++;
+			var htmlstring = "<div class='shiftwrapper'>";
+			htmlstring += "<select data-col-id='start' form='newtemplateform'>";
+			htmlstring += "<?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?>";
+			htmlstring += "</select>"; 
+			htmlstring += "<select data-col-id='finish' form='newtemplateform'>";
+			htmlstring += "<?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?>";
+			htmlstring += "</select>";
+			htmlstring += "<select data-col-id='loc' form='newtemplateform'>";
+			htmlstring += "<?php foreach($locations as $location){ print '<option value=\"$location\">' . $location . '</option>\n'; }?>";
+			htmlstring += "</select>";
+			htmlstring += "<button class='removeshift'>Remove Shift</button><br/>";
+			htmlstring += "</div>";
+			document.getElementById('sundaywrap').innerHTML += htmlstring;
 			console.log("Sunday clicked");
    
   		});
 
   		$("#addmonday").click(function() {
-			var num = 4;
-			var insertion1 = "<select id='Xsunstart' form='newtemplateform'><?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?> </select>"; 
-			var insertion2 = "<select id='Xsunfin' form='newtemplateform'><?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?> </select>";
-			var insertion3 = "<select id='Xsunloc' form='newtemplateform'><?php foreach($locations as $location){ print '<option value=\"$location\">' . $location . '</option>\n'; }?></select>";
-			var insertion4 = "<button>Remove Shift</button><br/>";
-			document.getElementById('mondaywrap').innerHTML += insertion1;
-			document.getElementById('mondaywrap').innerHTML += insertion2;
-			document.getElementById('mondaywrap').innerHTML += insertion3;
-			document.getElementById('mondaywrap').innerHTML += insertion4;
-			num++;
+			var htmlstring = "<div class='shiftwrapper'>";
+			htmlstring += "<select data-col-id='start' form='newtemplateform'>";
+			htmlstring += "<?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?>";
+			htmlstring += "</select>"; 
+			htmlstring += "<select data-col-id='finish' form='newtemplateform'>";
+			htmlstring += "<?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?>";
+			htmlstring += "</select>";
+			htmlstring += "<select data-col-id='loc' form='newtemplateform'>";
+			htmlstring += "<?php foreach($locations as $location){ print '<option value=\"$location\">' . $location . '</option>\n'; }?>";
+			htmlstring += "</select>";
+			htmlstring += "<button class='removeshift'>Remove Shift</button><br/>";
+			htmlstring += "</div>";
+			document.getElementById('mondaywrap').innerHTML += htmlstring;
 			console.log("Monday clicked");
    
   		});	
 
    		$("#addtuesday").click(function() {
-			var num = 4;
-			var insertion1 = "<select id='Xsunstart' form='newtemplateform'><?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?> </select>"; 
-			var insertion2 = "<select id='Xsunfin' form='newtemplateform'><?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?> </select>";
-			var insertion3 = "<select id='Xsunloc' form='newtemplateform'><?php foreach($locations as $location){ print '<option value=\"$location\">' . $location . '</option>\n'; }?></select>";
-			var insertion4 = "<button>Remove Shift</button><br/>";
-			document.getElementById('tuesdaywrap').innerHTML += insertion1;
-			document.getElementById('tuesdaywrap').innerHTML += insertion2;
-			document.getElementById('tuesdaywrap').innerHTML += insertion3;
-			document.getElementById('tuesdaywrap').innerHTML += insertion4;
-			num++;
+			var htmlstring = "<div class='shiftwrapper'>";
+			htmlstring += "<select data-col-id='start' form='newtemplateform'>";
+			htmlstring += "<?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?>";
+			htmlstring += "</select>"; 
+			htmlstring += "<select data-col-id='finish' form='newtemplateform'>";
+			htmlstring += "<?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?>";
+			htmlstring += "</select>";
+			htmlstring += "<select data-col-id='loc' form='newtemplateform'>";
+			htmlstring += "<?php foreach($locations as $location){ print '<option value=\"$location\">' . $location . '</option>\n'; }?>";
+			htmlstring += "</select>";
+			htmlstring += "<button class='removeshift'>Remove Shift</button><br/>";
+			htmlstring += "</div>";
+			document.getElementById('tuesdaywrap').innerHTML += htmlstring;
 			console.log("Tuesday clicked");
    
   		});	
 
    		$("#addwednesday").click(function() {
-			var num = 4;
-			var insertion1 = "<select id='Xsunstart' form='newtemplateform'><?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?> </select>"; 
-			var insertion2 = "<select id='Xsunfin' form='newtemplateform'><?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?> </select>";
-			var insertion3 = "<select id='Xsunloc' form='newtemplateform'><?php foreach($locations as $location){ print '<option value=\"$location\">' . $location . '</option>\n'; }?></select>";
-			var insertion4 = "<button>Remove Shift</button><br/>";
-			document.getElementById('wednesdaywrap').innerHTML += insertion1;
-			document.getElementById('wednesdaywrap').innerHTML += insertion2;
-			document.getElementById('wednesdaywrap').innerHTML += insertion3;
-			document.getElementById('wednesdaywrap').innerHTML += insertion4;
-			num++;
-			console.log("Wednesday clicked");
+			var htmlstring = "<div class='shiftwrapper'>";
+			htmlstring += "<select data-col-id='start' form='newtemplateform'>";
+			htmlstring += "<?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?>";
+			htmlstring += "</select>"; 
+			htmlstring += "<select data-col-id='finish' form='newtemplateform'>";
+			htmlstring += "<?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?>";
+			htmlstring += "</select>";
+			htmlstring += "<select data-col-id='loc' form='newtemplateform'>";
+			htmlstring += "<?php foreach($locations as $location){ print '<option value=\"$location\">' . $location . '</option>\n'; }?>";
+			htmlstring += "</select>";
+			htmlstring += "<button class='removeshift'>Remove Shift</button><br/>";
+			htmlstring += "</div>";
+			document.getElementById('wednesdaywrap').innerHTML += htmlstring;
+			console.log("Monday clicked");
    
   		});
 
 		$("#addthursday").click(function() {
-			var num = 4;
-			var insertion1 = "<select id='Xsunstart' form='newtemplateform'><?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?> </select>"; 
-			var insertion2 = "<select id='Xsunfin' form='newtemplateform'><?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?> </select>";
-			var insertion3 = "<select id='Xsunloc' form='newtemplateform'><?php foreach($locations as $location){ print '<option value=\"$location\">' . $location . '</option>\n'; }?></select>";
-			var insertion4 = "<button>Remove Shift</button><br/>";
-			document.getElementById('thursdaywrap').innerHTML += insertion1;
-			document.getElementById('thursdaywrap').innerHTML += insertion2;
-			document.getElementById('thursdaywrap').innerHTML += insertion3;
-			document.getElementById('thursdaywrap').innerHTML += insertion4;
-			num++;
+			var htmlstring = "<div class='shiftwrapper'>";
+			htmlstring += "<select data-col-id='start' form='newtemplateform'>";
+			htmlstring += "<?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?>";
+			htmlstring += "</select>"; 
+			htmlstring += "<select data-col-id='finish' form='newtemplateform'>";
+			htmlstring += "<?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?>";
+			htmlstring += "</select>";
+			htmlstring += "<select data-col-id='loc' form='newtemplateform'>";
+			htmlstring += "<?php foreach($locations as $location){ print '<option value=\"$location\">' . $location . '</option>\n'; }?>";
+			htmlstring += "</select>";
+			htmlstring += "<button class='removeshift'>Remove Shift</button><br/>";
+			htmlstring += "</div>";
+			document.getElementById('thursdaywrap').innerHTML += htmlstring;
 			console.log("Thursday clicked");
 		});
 
 		$("#addfriday").click(function() {
-			var num = 4;
-			var insertion1 = "<select id='Xsunstart' form='newtemplateform'><?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?> </select>"; 
-			var insertion2 = "<select id='Xsunfin' form='newtemplateform'><?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?> </select>";
-			var insertion3 = "<select id='Xsunloc' form='newtemplateform'><?php foreach($locations as $location){ print '<option value=\"$location\">' . $location . '</option>\n'; }?></select>";
-			var insertion4 = "<button>Remove Shift</button><br/>";
-			document.getElementById('fridaywrap').innerHTML += insertion1;
-			document.getElementById('fridaywrap').innerHTML += insertion2;
-			document.getElementById('fridaywrap').innerHTML += insertion3;
-			document.getElementById('fridaywrap').innerHTML += insertion4;
-			num++;
+			var htmlstring = "<div class='shiftwrapper'>";
+			htmlstring += "<select data-col-id='start' form='newtemplateform'>";
+			htmlstring += "<?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?>";
+			htmlstring += "</select>"; 
+			htmlstring += "<select data-col-id='finish' form='newtemplateform'>";
+			htmlstring += "<?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?>";
+			htmlstring += "</select>";
+			htmlstring += "<select data-col-id='loc' form='newtemplateform'>";
+			htmlstring += "<?php foreach($locations as $location){ print '<option value=\"$location\">' . $location . '</option>\n'; }?>";
+			htmlstring += "</select>";
+			htmlstring += "<button class='removeshift'>Remove Shift</button><br/>";
+			htmlstring += "</div>";
+			document.getElementById('fridaywrap').innerHTML += htmlstring;
 			console.log("Friday clicked");
 		});
 
 		$("#addsaturday").click(function() {
-			var num = 4;
-			var insertion1 = "<select id='Xsunstart' form='newtemplateform'><?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?> </select>"; 
-			var insertion2 = "<select id='Xsunfin' form='newtemplateform'><?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?> </select>";
-			var insertion3 = "<select id='Xsunloc' form='newtemplateform'><?php foreach($locations as $location){ print '<option value=\"$location\">' . $location . '</option>\n'; }?></select>";
-			var insertion4 = "<button>Remove Shift</button><br/>";
-			document.getElementById('saturdaywrap').innerHTML += insertion1;
-			document.getElementById('saturdaywrap').innerHTML += insertion2;
-			document.getElementById('saturdaywrap').innerHTML += insertion3;
-			document.getElementById('saturdaywrap').innerHTML += insertion4;
-			num++;
+			var htmlstring = "<div class='shiftwrapper'>";
+			htmlstring += "<select data-col-id='start' form='newtemplateform'>";
+			htmlstring += "<?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?>";
+			htmlstring += "</select>"; 
+			htmlstring += "<select data-col-id='finish' form='newtemplateform'>";
+			htmlstring += "<?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?>";
+			htmlstring += "</select>";
+			htmlstring += "<select data-col-id='loc' form='newtemplateform'>";
+			htmlstring += "<?php foreach($locations as $location){ print '<option value=\"$location\">' . $location . '</option>\n'; }?>";
+			htmlstring += "</select>";
+			htmlstring += "<button class='removeshift'>Remove Shift</button><br/>";
+			htmlstring += "</div>";
+			document.getElementById('saturdaywrap').innerHTML += htmlstring;
 			console.log("Saturday clicked");
 		});		 			  				
 	});
@@ -185,15 +207,35 @@ $locations = array("Library","Portland","Park","Richmond","IT Center","Guildhall
 		<div class="daywrap" id="sunday">
 			<h2>Pick Sunday's Shifts</h2>
 			<div id="sundaywrap">
-				<select id='1sunstart' form="newtemplateform">
-				<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
-				</select>
-				<select id='1sunfin' form="newtemplateform">
-				<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
-				</select>
-				<select id='1sunloc'>
-				<?php foreach($locations as $location){ print "<option value=\"$location\">" . $location . "</option>\n"; }?>
-				</select><button>Remove Shift</button><br/>
+				<div class="shiftwrapper">
+					<select data-col-id='start' form="newtemplateform">
+<?php
+$start = "00:00";
+$end = "23:30";
+
+$tStart = strtotime($start);
+$tEnd = strtotime($end);
+$tNow = $tStart;
+
+while($tNow <= $tEnd){
+  print "<option value=\"$tNow\" "date("H:i",$tNow)."\n";
+  $tNow = strtotime('+30 minutes',$tNow);
+}?>		
+
+			</select>
+					<select data-col-id='finish' form="newtemplateform">
+					<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
+					</select>
+					<select data-col-id='loc' form="newtemplateform">
+					<?php foreach($locations as $location){ print "<option value=\"$location\">" . $location . "</option>\n"; }?>
+					</select>
+					<button class='removeshift'>Remove Shift</button>
+					<br/>
+				</div>
+
+
+
+
 
 				<select id='2sunstart' form="newtemplateform">
 				<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
