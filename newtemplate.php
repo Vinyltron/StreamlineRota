@@ -209,20 +209,8 @@ $locations = array("Library","Portland","Park","Richmond","IT Center","Guildhall
 			<div id="sundaywrap">
 				<div class="shiftwrapper">
 					<select data-col-id='start' form="newtemplateform">
-<?php
-$start = "00:00";
-$end = "23:30";
-
-$tStart = strtotime($start);
-$tEnd = strtotime($end);
-$tNow = $tStart;
-
-while($tNow <= $tEnd){
-  print "<option value=\"$tNow\" "date("H:i",$tNow)."\n";
-  $tNow = strtotime('+30 minutes',$tNow);
-}?>		
-
-			</select>
+					<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
+					</select>
 					<select data-col-id='finish' form="newtemplateform">
 					<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
 					</select>
@@ -233,19 +221,19 @@ while($tNow <= $tEnd){
 					<br/>
 				</div>
 
-
-
-
-
-				<select id='2sunstart' form="newtemplateform">
-				<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
-				</select>
-				<select id='2sunfin' form="newtemplateform">
-				<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
-				</select>
-				<select id='2sunloc'>
-				<?php foreach($locations as $location){ print "<option value=\"$location\">" . $location . "</option>\n"; }?>
-				</select><button>Remove Shift</button><br/>
+				<div class="shiftwrapper">
+					<select data-col-id='start' form="newtemplateform">
+					<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
+					</select>
+					<select data-col-id='finish' form="newtemplateform">
+					<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
+					</select>
+					<select data-col-id='loc' form="newtemplateform">
+					<?php foreach($locations as $location){ print "<option value=\"$location\">" . $location . "</option>\n"; }?>
+					</select>
+					<button class='removeshift'>Remove Shift</button>
+					<br/>
+				</div>
 			</div>
 			<button id='addsunday'>Add another shift</button>
 		</div>
@@ -255,35 +243,33 @@ while($tNow <= $tEnd){
 		<div class="daywrap" id="monday">
 			<h2>Pick Monday's Shifts</h2>
 			<div id="mondaywrap">
-				<select id='1monstart' form="newtemplateform">
-				<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
-				</select>
-				<select id='1monfin' form="newtemplateform">
-				<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
-				</select>
-				<select id='1monloc'>
-				<?php foreach($locations as $location){ print "<option value=\"$location\">" . $location . "</option>\n"; }?>
-				</select><button>Remove Shift</button><br/>
+				<div class="shiftwrapper">
+					<select data-col-id='start' form="newtemplateform">
+					<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
+					</select>
+					<select data-col-id='finish' form="newtemplateform">
+					<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
+					</select>
+					<select data-col-id='loc' form="newtemplateform">
+					<?php foreach($locations as $location){ print "<option value=\"$location\">" . $location . "</option>\n"; }?>
+					</select>
+					<button class='removeshift'>Remove Shift</button>
+					<br/>
+				</div>
 
-				<select id='2monstart' form="newtemplateform">
-				<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
-				</select>
-				<select id='2monfin' form="newtemplateform">
-				<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
-				</select>
-				<select id='2monloc'>
-				<?php foreach($locations as $location){ print "<option value=\"$location\">" . $location . "</option>\n"; }?>
-				</select><button>Remove Shift</button><br/>
-
-				<select id='3monstart' form="newtemplateform">
-				<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
-				</select>
-				<select id='3monfin' form="newtemplateform">
-				<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
-				</select>
-				<select id='3monloc'>
-				<?php foreach($locations as $location){ print "<option value=\"$location\">" . $location . "</option>\n"; }?>
-				</select><button>Remove Shift</button><br/>
+				<div class="shiftwrapper">
+					<select data-col-id='start' form="newtemplateform">
+					<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
+					</select>
+					<select data-col-id='finish' form="newtemplateform">
+					<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
+					</select>
+					<select data-col-id='loc' form="newtemplateform">
+					<?php foreach($locations as $location){ print "<option value=\"$location\">" . $location . "</option>\n"; }?>
+					</select>
+					<button class='removeshift'>Remove Shift</button>
+					<br/>
+				</div>
 			</div>
 			<button id='addmonday'>Add another shift</button>
 		</div>
@@ -293,35 +279,33 @@ while($tNow <= $tEnd){
 		<div class="daywrap" id="tuesday">
 			<h2>Pick Tuesday's Shifts</h2>
 			<div id="tuesdaywrap">
-				<select id='1tuestart' form="newtemplateform">
-				<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
-				</select>
-				<select id='1tuefin' form="newtemplateform">
-				<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
-				</select>
-				<select id='1tueloc'>
-				<?php foreach($locations as $location){ print "<option value=\"$location\">" . $location . "</option>\n"; }?>
-				</select><button>Remove Shift</button><br/>
+				<div class="shiftwrapper">
+					<select data-col-id='start' form="newtemplateform">
+					<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
+					</select>
+					<select data-col-id='finish' form="newtemplateform">
+					<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
+					</select>
+					<select data-col-id='loc' form="newtemplateform">
+					<?php foreach($locations as $location){ print "<option value=\"$location\">" . $location . "</option>\n"; }?>
+					</select>
+					<button class='removeshift'>Remove Shift</button>
+					<br/>
+				</div>
 
-				<select id='2tuestart' form="newtemplateform">
-				<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
-				</select>
-				<select id='2tuefin' form="newtemplateform">
-				<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
-				</select>
-				<select id='2tueloc'>
-				<?php foreach($locations as $location){ print "<option value=\"$location\">" . $location . "</option>\n"; }?>
-				</select><button>Remove Shift</button><br/>
-
-				<select id='3tuestart' form="newtemplateform">
-				<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
-				</select>
-				<select id='3tuefin' form="newtemplateform">
-				<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
-				</select>
-				<select id='3tueloc'>
-				<?php foreach($locations as $location){ print "<option value=\"$location\">" . $location . "</option>\n"; }?>
-				</select><button>Remove Shift</button><br/>
+				<div class="shiftwrapper">
+					<select data-col-id='start' form="newtemplateform">
+					<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
+					</select>
+					<select data-col-id='finish' form="newtemplateform">
+					<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
+					</select>
+					<select data-col-id='loc' form="newtemplateform">
+					<?php foreach($locations as $location){ print "<option value=\"$location\">" . $location . "</option>\n"; }?>
+					</select>
+					<button class='removeshift'>Remove Shift</button>
+					<br/>
+				</div>
 			</div>
 			<button id="addtuesday">Add another shift</button>
 		</div>
@@ -331,35 +315,33 @@ while($tNow <= $tEnd){
 		<div class="daywrap" id="wednesday">
 			<h2>Pick Wednesday's Shifts</h2>
 			<div id="wednesdaywrap">
-				<select id='1wedstart' form="newtemplateform">
-				<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
-				</select>
-				<select id='1wedfin' form="newtemplateform">
-				<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
-				</select>
-				<select id='1wedloc'>
-				<?php foreach($locations as $location){ print "<option value=\"$location\">" . $location . "</option>\n"; }?>
-				</select><button>Remove Shift</button><br/>
+				<div class="shiftwrapper">
+					<select data-col-id='start' form="newtemplateform">
+					<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
+					</select>
+					<select data-col-id='finish' form="newtemplateform">
+					<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
+					</select>
+					<select data-col-id='loc' form="newtemplateform">
+					<?php foreach($locations as $location){ print "<option value=\"$location\">" . $location . "</option>\n"; }?>
+					</select>
+					<button class='removeshift'>Remove Shift</button>
+					<br/>
+				</div>
 
-				<select id='2wedstart' form="newtemplateform">
-				<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
-				</select>
-				<select id='2wedfin' form="newtemplateform">
-				<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
-				</select>
-				<select id='2wedloc'>
-				<?php foreach($locations as $location){ print "<option value=\"$location\">" . $location . "</option>\n"; }?>
-				</select><button>Remove Shift</button><br/>
-
-				<select id='3wedstart' form="newtemplateform">
-				<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
-				</select>
-				<select id='3wedfin' form="newtemplateform">
-				<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
-				</select>
-				<select id='3wedloc'>
-				<?php foreach($locations as $location){ print "<option value=\"$location\">" . $location . "</option>\n"; }?>
-				</select><button>Remove Shift</button><br/>
+				<div class="shiftwrapper">
+					<select data-col-id='start' form="newtemplateform">
+					<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
+					</select>
+					<select data-col-id='finish' form="newtemplateform">
+					<?php for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);?>
+					</select>
+					<select data-col-id='loc' form="newtemplateform">
+					<?php foreach($locations as $location){ print "<option value=\"$location\">" . $location . "</option>\n"; }?>
+					</select>
+					<button class='removeshift'>Remove Shift</button>
+					<br/>
+				</div>
 			</div>
 			<button id="addwednesday">Add another shift</button>
 		</div>
