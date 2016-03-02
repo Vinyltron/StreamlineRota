@@ -68,5 +68,12 @@ a .mainbutton {
 
 #duplicaterota{
 /*	float: left;*/
+<<<<<<< HEAD
 >>>>>>> origin/USB-Branch
+=======
+}
+
+.save{
+	font-size: 150%;
+>>>>>>> USB-Branch
 }
