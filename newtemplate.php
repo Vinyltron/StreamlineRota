@@ -1,28 +1,16 @@
 <!--Some stuff that needs to go in a separate file-->
-<?php
-//Make a database connection
-try {
-$dba = new mysqli("localhost","root","");
-} catch (\Exception $e) {
-	echo $e->getMessage();
-}
-//If the connection is unable to select the database, point the browser to the install file
-if ($dba->select_db('fyp') === false) {
-	echo "Database not found error";
-}
-mysqli_close($dba);
-//Initialise main database connection
-$db = new PDO('mysql:host=localhost;dbname=fyp;charset=utf8', 'root', '');
+<?php 
 
-//Define buildings array
-$locations = array("Library","Portland","Park","Richmond","IT Center","Guildhall","Langstone");
-//Define days array
-$days = array("sunday","monday","tuesday","wednesday","thursday","friday","saturday");
+include '/php/dbcon.php';
+
+
+	//Define buildings array
+	$locations = array("Library","Portland","Park","Richmond","IT Center","Guildhall","Langstone");
+	//Define days array
+	$days = array("sunday","monday","tuesday","wednesday","thursday","friday","saturday");
 
 ?>
 <!--//////////////////////////////////////////////////-->
-
-
 
 <!doctype HTML>
 <html>
@@ -32,141 +20,8 @@ $days = array("sunday","monday","tuesday","wednesday","thursday","friday","satur
 		<link rel="stylesheet" type="text/css" href="/css/main.css">
 		<link rel="stylesheet" type="text/css" href="/css/table.css">
 		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+		<script type="text/javascript" src="js/dayclickfunction.js"></script>
 	</head>
-
-	<script>
-	$( document ).ready(function() {
-
-		// capture any clicks on the .shiftwrapper buttons that are in the main body of the dom
-		$("body").on("click", ".removeshift", function() {
-			$(this).closest(".shiftwrapper").remove();
-		});
-
-		$("#addsunday").click(function() {
-			var htmlstring = "<div class='shiftwrapper'>";
-			htmlstring += "<select data-col-id='start' form='newtemplateform'>";
-			htmlstring += "<?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?>";
-			htmlstring += "</select>"; 
-			htmlstring += "<select data-col-id='finish' form='newtemplateform'>";
-			htmlstring += "<?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?>";
-			htmlstring += "</select>";
-			htmlstring += "<select data-col-id='loc' form='newtemplateform'>";
-			htmlstring += "<?php foreach($locations as $location){ print '<option value=\"$location\">' . $location . '</option>\n'; }?>";
-			htmlstring += "</select>";
-			htmlstring += "<button class='removeshift'>Remove Shift</button><br/>";
-			htmlstring += "</div>";
-			document.getElementById('sundaywrap').innerHTML += htmlstring;
-			console.log("Sunday clicked");
-   
-  		});
-
-  		$("#addmonday").click(function() {
-			var htmlstring = "<div class='shiftwrapper'>";
-			htmlstring += "<select data-col-id='start' form='newtemplateform'>";
-			htmlstring += "<?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?>";
-			htmlstring += "</select>"; 
-			htmlstring += "<select data-col-id='finish' form='newtemplateform'>";
-			htmlstring += "<?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?>";
-			htmlstring += "</select>";
-			htmlstring += "<select data-col-id='loc' form='newtemplateform'>";
-			htmlstring += "<?php foreach($locations as $location){ print '<option value=\"$location\">' . $location . '</option>\n'; }?>";
-			htmlstring += "</select>";
-			htmlstring += "<button class='removeshift'>Remove Shift</button><br/>";
-			htmlstring += "</div>";
-			document.getElementById('mondaywrap').innerHTML += htmlstring;
-			console.log("Monday clicked");
-   
-  		});	
-
-   		$("#addtuesday").click(function() {
-			var htmlstring = "<div class='shiftwrapper'>";
-			htmlstring += "<select data-col-id='start' form='newtemplateform'>";
-			htmlstring += "<?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?>";
-			htmlstring += "</select>"; 
-			htmlstring += "<select data-col-id='finish' form='newtemplateform'>";
-			htmlstring += "<?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?>";
-			htmlstring += "</select>";
-			htmlstring += "<select data-col-id='loc' form='newtemplateform'>";
-			htmlstring += "<?php foreach($locations as $location){ print '<option value=\"$location\">' . $location . '</option>\n'; }?>";
-			htmlstring += "</select>";
-			htmlstring += "<button class='removeshift'>Remove Shift</button><br/>";
-			htmlstring += "</div>";
-			document.getElementById('tuesdaywrap').innerHTML += htmlstring;
-			console.log("Tuesday clicked");
-   
-  		});	
-
-   		$("#addwednesday").click(function() {
-			var htmlstring = "<div class='shiftwrapper'>";
-			htmlstring += "<select data-col-id='start' form='newtemplateform'>";
-			htmlstring += "<?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?>";
-			htmlstring += "</select>"; 
-			htmlstring += "<select data-col-id='finish' form='newtemplateform'>";
-			htmlstring += "<?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?>";
-			htmlstring += "</select>";
-			htmlstring += "<select data-col-id='loc' form='newtemplateform'>";
-			htmlstring += "<?php foreach($locations as $location){ print '<option value=\"$location\">' . $location . '</option>\n'; }?>";
-			htmlstring += "</select>";
-			htmlstring += "<button class='removeshift'>Remove Shift</button><br/>";
-			htmlstring += "</div>";
-			document.getElementById('wednesdaywrap').innerHTML += htmlstring;
-			console.log("Monday clicked");
-   
-  		});
-
-		$("#addthursday").click(function() {
-			var htmlstring = "<div class='shiftwrapper'>";
-			htmlstring += "<select data-col-id='start' form='newtemplateform'>";
-			htmlstring += "<?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?>";
-			htmlstring += "</select>"; 
-			htmlstring += "<select data-col-id='finish' form='newtemplateform'>";
-			htmlstring += "<?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?>";
-			htmlstring += "</select>";
-			htmlstring += "<select data-col-id='loc' form='newtemplateform'>";
-			htmlstring += "<?php foreach($locations as $location){ print '<option value=\"$location\">' . $location . '</option>\n'; }?>";
-			htmlstring += "</select>";
-			htmlstring += "<button class='removeshift'>Remove Shift</button><br/>";
-			htmlstring += "</div>";
-			document.getElementById('thursdaywrap').innerHTML += htmlstring;
-			console.log("Thursday clicked");
-		});
-
-		$("#addfriday").click(function() {
-			var htmlstring = "<div class='shiftwrapper'>";
-			htmlstring += "<select data-col-id='start' form='newtemplateform'>";
-			htmlstring += "<?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?>";
-			htmlstring += "</select>"; 
-			htmlstring += "<select data-col-id='finish' form='newtemplateform'>";
-			htmlstring += "<?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?>";
-			htmlstring += "</select>";
-			htmlstring += "<select data-col-id='loc' form='newtemplateform'>";
-			htmlstring += "<?php foreach($locations as $location){ print '<option value=\"$location\">' . $location . '</option>\n'; }?>";
-			htmlstring += "</select>";
-			htmlstring += "<button class='removeshift'>Remove Shift</button><br/>";
-			htmlstring += "</div>";
-			document.getElementById('fridaywrap').innerHTML += htmlstring;
-			console.log("Friday clicked");
-		});
-
-		$("#addsaturday").click(function() {
-			var htmlstring = "<div class='shiftwrapper'>";
-			htmlstring += "<select data-col-id='start' form='newtemplateform'>";
-			htmlstring += "<?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?>";
-			htmlstring += "</select>"; 
-			htmlstring += "<select data-col-id='finish' form='newtemplateform'>";
-			htmlstring += "<?php for($i = 0; $i < 24; print '<option value=\"$i\">' . date("h.iA", strtotime($i . ":00:00")) . '</option>\n', $i++);?>";
-			htmlstring += "</select>";
-			htmlstring += "<select data-col-id='loc' form='newtemplateform'>";
-			htmlstring += "<?php foreach($locations as $location){ print '<option value=\"$location\">' . $location . '</option>\n'; }?>";
-			htmlstring += "</select>";
-			htmlstring += "<button class='removeshift'>Remove Shift</button><br/>";
-			htmlstring += "</div>";
-			document.getElementById('saturdaywrap').innerHTML += htmlstring;
-			console.log("Saturday clicked");
-		});		 			  				
-	});
-	</script>
-
 
 	<body>
 		<!--head-->
@@ -201,37 +56,50 @@ $days = array("sunday","monday","tuesday","wednesday","thursday","friday","satur
 			?>
 			</select>
 		</div>
-				<button class="save">Save</button>
+
+		<!--Button to save template to DB-->
+		<button class="save" action="">Save</button>
 		
 		<div class="clear"></div>
 
+
+		<!--Construct the page-->
 		<?php 
 		// $daynum = count($days);
 		foreach ($days as $day){
 			echo '<div class="daywrap" id="' . $day . '">';
 			echo '<h2>Pick ' . ucfirst($day) . '&rsquo;s Shifts</h2>';
-			echo '<div id="' . $day . 'wrap">';
-			echo '<div class="shiftwrapper">';
-			echo '<select data-col-id="start" form="newtemplateform">';
-			for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);
-			echo '</select>';
-			echo '<select data-col-id="finish" form="newtemplateform">';
-			for($i = 0; $i < 24; print "<option value=\"$i\">" . date("h.iA", strtotime($i . ":00:00")) . "</option>\n", $i++);
-			echo '</select>';
-			echo '<select data-col-id="loc" form="newtemplateform">';
-			foreach($locations as $location){ print "<option value=\"$location\">" . $location . "</option>\n"; };
-			echo '</select>';
-			echo '<button class="removeshift">Remove Shift</button>';
-			echo '<br/>';
-			echo '</div>';
-			echo '</div>';
-			echo '<button id="add' . $day . '">Add another shift</button>';
+			echo '<button type ="button" class="add_shift">Add another shift</button>';
 			echo '</div>';
 		}
 		?>
 
+		<!--Clear the floats-->
 		<div class="clear"></div>
 
+		<!--Template for shift dropdowns-->
+		<div id="shifttemplate" style="display:none">
+			<div class='shiftwrapper'>
+				<select data-col-id='start' form='newtemplateform'>
+					<?php 
+						for($hours=0; $hours<24; $hours++) // the interval for hours is '1'
+	    					for($mins=0; $mins<60; $mins+=30) // the interval for mins is '30'
+	        					echo '<option>'.str_pad($hours,2,'0',STR_PAD_LEFT).':'
+	                       						.str_pad($mins,2,'0',STR_PAD_LEFT).'</option>';?>
+				</select>
+				<select data-col-id='finish' form='newtemplateform'>";
+				<?php 
+					for($hours=0; $hours<24; $hours++) // the interval for hours is '1'
+						for($mins=0; $mins<60; $mins+=30) // the interval for mins is '30'
+	    					echo '<option>'.str_pad($hours,2,'0',STR_PAD_LEFT).':'
+	                   						.str_pad($mins,2,'0',STR_PAD_LEFT).'</option>';?>
+				</select>
+				<select data-col-id='loc' form='newtemplateform'>
+				<?php foreach($locations as $location){ print '<option value=\"$location\">' . $location . '</option>\n'; }?>
+				</select>
+				<button class='removeshift'>Remove Shift</button><br/>
+			</div>
+		</div>
 
 
 	</body>
