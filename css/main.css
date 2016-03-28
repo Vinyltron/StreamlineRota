@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-body{
-	max-width: 100%;
-}
-
-.htemplate{
-	max-width: inherit;
-}
-
-.ftemplate{
-	position: absolute;
-	max-width: inherit;
-/*	height: 114px;*/
-	bottom:0px;
-=======
 body{
 	max-width: 100%;
 	font-family: helvetica, sans-serif;
@@ -68,12 +53,8 @@ a .mainbutton {
 
 #duplicaterota{
 /*	float: left;*/
-<<<<<<< HEAD
->>>>>>> origin/USB-Branch
-=======
 }
 
 .save{
 	font-size: 150%;
->>>>>>> USB-Branch
 }

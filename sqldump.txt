@@ -1,0 +1,104 @@
+-- phpMyAdmin SQL Dump
+-- version 4.4.10
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost:3306
+-- Generation Time: Mar 28, 2016 at 09:03 PM
+-- Server version: 5.5.42
+-- PHP Version: 7.0.0
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Database: `fyp`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `availability`
+--
+
+CREATE TABLE `availability` (
+  `Username` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rotas`
+--
+
+CREATE TABLE `rotas` (
+  `shift_id` int(11) NOT NULL,
+  `week_start_date` date NOT NULL,
+  `week_number` int(2) NOT NULL,
+  `shift_day` char(10) NOT NULL,
+  `shift_start` time NOT NULL,
+  `shift_end` time NOT NULL,
+  `employee_code` char(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rota_templates`
+--
+
+CREATE TABLE `rota_templates` (
+  `shift_id` int(11) NOT NULL,
+  `rota_name` varchar(20) NOT NULL,
+  `shift_day` char(10) NOT NULL,
+  `shift_loc` char(20) NOT NULL,
+  `shift_start` time NOT NULL,
+  `shift_end` time NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `rota_templates`
+--
+
+INSERT INTO `rota_templates` (`shift_id`, `rota_name`, `shift_day`, `shift_loc`, `shift_start`, `shift_end`) VALUES
+(1, 'testrota', 'Monday', 'Library', '08:00:00', '12:00:00'),
+(2, 'testrota', 'Monday', 'Library', '12:00:00', '16:00:00'),
+(3, 'testrota', 'Monday', 'Library', '16:00:00', '20:00:00'),
+(4, 'testrota', 'Monday', 'Library', '20:00:00', '00:00:00'),
+(5, 'testrota', 'Monday', 'Park', '08:00:00', '12:00:00'),
+(6, 'testrota', 'Monday', 'Park', '12:00:00', '16:00:00'),
+(7, 'testrota', 'Monday', 'Park', '16:00:00', '20:00:00'),
+(8, 'testrota', 'Monday', 'Portland', '08:00:00', '12:00:00'),
+(9, 'testrota', 'Monday', 'Portland', '12:00:00', '16:00:00'),
+(10, 'testrota', 'Tuesday', 'Library', '08:00:00', '12:00:00'),
+(11, 'testrota', 'Tuesday', 'Library', '12:00:00', '16:00:00');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `rotas`
+--
+ALTER TABLE `rotas`
+  ADD PRIMARY KEY (`shift_id`);
+
+--
+-- Indexes for table `rota_templates`
+--
+ALTER TABLE `rota_templates`
+  ADD PRIMARY KEY (`shift_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `rotas`
+--
+ALTER TABLE `rotas`
+  MODIFY `shift_id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `rota_templates`
+--
+ALTER TABLE `rota_templates`
+  MODIFY `shift_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;

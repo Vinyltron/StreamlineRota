@@ -1,7 +1,7 @@
 <?php
 	//Make a database connection
 	try {
-	$dba = new mysqli("localhost","root","");
+	$dba = new mysqli("localhost","root","root");
 	} catch (\Exception $e) {
 		echo $e->getMessage();
 	}
@@ -11,6 +11,6 @@
 	}
 	mysqli_close($dba);
 	//Initialise main database connection
-	$db = new PDO('mysql:host=localhost;dbname=fyp;charset=utf8', 'root', '');
+	$db = new PDO('mysql:host=localhost;dbname=fyp;charset=utf8', 'root', 'root');
 
 ?>

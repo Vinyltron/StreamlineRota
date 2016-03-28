@@ -1,16 +1,12 @@
-<!--Some stuff that needs to go in a separate file-->
 <?php 
-
-include '/php/dbcon.php';
-
+	include 'php/dbcon.php';
 
 	//Define buildings array
 	$locations = array("Library","Portland","Park","Richmond","IT Center","Guildhall","Langstone");
+
 	//Define days array
 	$days = array("sunday","monday","tuesday","wednesday","thursday","friday","saturday");
-
 ?>
-<!--//////////////////////////////////////////////////-->
 
 <!doctype HTML>
 <html>
@@ -28,16 +24,15 @@ include '/php/dbcon.php';
 		<img src="header.png" class="htemplate">
 		<!--/head-->
 
-
 		<!-- User selects a rota name which is inserted into fyp.rota_template as rota_name -->
 		<form action="newrotatemplate.php" method="post" id="newtemplateform">Name the template: <input type="text" name="rotaname"></form>
-
 
 		<!-- This is where the database will output all unique rotas into a dropdown -->
 		<div><label for="duplicaterota">Clone existing template:</label>
 			<select id="duplicaterota" form="newtemplateform">
+			<option disabled selected value> -- select a rota -- </option>
 			<!-- Select all unique rotas from DB and output them to options -->
-			<?php
+						<?php
 			// SQL Statement	 
 				$query = "SELECT DISTINCT rota_name FROM fyp.rota_templates";
 				$stmt = $db->prepare($query);
@@ -55,6 +50,8 @@ include '/php/dbcon.php';
 					} 
 			?>
 			</select>
+			<!-- This button will pull in all the shifts from the selected existing rota -->
+			<button>Clone</button>
 		</div>
 
 		<!--Button to save template to DB-->
